@@ -17,9 +17,15 @@ window.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  // Première arrivée dans la session : jouer l'introduction
+  // L'introduction est considérée comme vue pour cette session
   sessionStorage.setItem('introSeen', 'true');
 
+  // Permet de passer l'introduction immédiatement
+  intro.addEventListener('click', () => {
+    intro.classList.add('hidden');
+  }, { once: true });
+
+  // Fin automatique de l'introduction
   window.setTimeout(() => {
     intro.classList.add('hidden');
   }, 4600);
