@@ -1,1 +1,76 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Contactez Mickaël Carrette et envoyez une demande de contact par e-mail.">
+<meta name="author" content="Mickaël Carrette">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Mickaël Carrette — Contact">
+<meta property="og:description" content="Un poste, un projet, une idée ou simplement une question ? Échangeons.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mickaël Carrette — Contact">
+<meta name="twitter:description" content="Un poste, un projet, une idée ou simplement une question ? Échangeons.">
+<title>Mickaël Carrette — Contact</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<header><div class="nav"><a class="logo" href="../index.html">MICKAËL<span>.</span></a><nav><a href="../experiences/index.html">Expériences</a><a href="../competences/index.html">Compétences</a><a href="../projets/index.html">Projets</a><a href="../contact/index.html" aria-current="page">Contact</a></nav></div></header>
+<main>
+<section class="page-hero contact-hero">
+<div class="eyebrow">Dernière étape</div>
+<h1>ON ÉCHANGE ?</h1>
+<p>Un poste, un projet, une idée ou simplement une question ?<br>Chaque nouvelle rencontre est aussi une occasion d’apprendre quelque chose.</p>
+</section>
 
+<section class="section contact-section">
+<div class="contact-single">
+<div class="contact-panel contact-callback">
+<div class="eyebrow">Vous souhaitez me contacter ?</div>
+<h2>LAISSER UN MESSAGE</h2>
+<p>Quelques informations suffisent pour que je puisse comprendre votre demande et vous répondre.</p>
+<form id="callback-form" class="contact-form">
+<label for="name">Nom / Prénom <span>*</span></label>
+<input id="name" name="name" type="text" autocomplete="name" required>
+<label for="email">Adresse e-mail <span>*</span></label>
+<input id="email" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="votre-adresse@exemple.fr">
+<label for="reason">Motif de la demande <span>*</span></label>
+<input id="reason" name="reason" type="text" required placeholder="Ex. opportunité professionnelle, projet, échange…">
+<label for="message">Message / précisions <span>*</span></label>
+<textarea id="message" name="message" rows="6" required></textarea>
+<button class="btn primary" type="submit">ENVOYER MA DEMANDE →</button>
+<p class="form-note">Votre demande est préparée dans votre messagerie à destination de Mickaël. Les demandes sans motif ou sans message suffisamment explicite ne seront pas traitées.</p>
+<p id="form-error" class="form-error" role="alert" hidden></p>
+</form>
+</div>
+</div>
+</section>
+
+<section class="cta contact-closing">
+<div class="eyebrow">À suivre</div>
+<h2>PLUSIEURS MÉTIERS.<br>UNE MÊME CURIOSITÉ.</h2>
+<p>Peut-être une prochaine expérience à écrire.</p>
+</section>
+</main>
+<footer><div class="footer-in"><span>© 2026 MICKAËL — LE PRODUIT UNIQUE</span><span>PROFIL MK-2026 · ÉDITION 01</span></div></footer>
+<script src="../assets/js/app.js"></script>
+<script>
+(function(){
+  const form=document.getElementById('callback-form');
+  const error=document.getElementById('form-error');
+  const destination='mickaelcarrette@outlook.fr';
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    error.hidden=true;
+    if(!form.checkValidity()){ form.reportValidity(); return; }
+    const data=new FormData(form);
+    const subject='Demande de contact — '+data.get('reason');
+    const body='Bonjour Mickaël,\n\nJe souhaite vous contacter.\n\nNom / Prénom : '+data.get('name')+'\nAdresse e-mail : '+data.get('email')+'\nMotif : '+data.get('reason')+'\n\nMessage :\n'+data.get('message');
+    window.location.href='mailto:'+destination+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+  });
+})();
+</script>
+</body>
+</html>
